@@ -1,8 +1,13 @@
--- Ranks longevity of Glam bands
--- Column names must be: band_name and lifespan (in years)
+-- Select the database you are working on
+USE your_database_name;
 
-SELECT
-band_name, ifnull(split, 2020)-ifnull(formed, 0) AS lifespan
+-- Query to list all bands with Glam rock as their main style, ranked by their longevity
+SELECT 
+    band_name, 
+    CASE
+        WHEN split IS NULL THEN 2022 - formed
+        ELSE split - formed
+    END AS lifespan
 FROM metal_bands
-WHERE style LIKE "%Glam rock%"
+WHERE main_style = 'Glam rock'
 ORDER BY lifespan DESC;
