@@ -1,4 +1,4 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 12-log_stats.py - Log statistics module with additional feature to display top 10 IPs
 """
